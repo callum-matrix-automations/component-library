@@ -1,0 +1,54 @@
+{
+  "name": "component-library",
+  "version": "1.0.0",
+  "description": "A personal collection of reusable components extracted from previous builds. Browse, copy, paste, and restyle as needed.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callum-matrix-automations/component-library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/callum-matrix-automations/component-library/issues"
+  },
+  "homepage": "https://github.com/callum-matrix-automations/component-library#readme",
+  "devDependencies": {
+    "@chromatic-com/storybook": "^5.1.1",
+    "@storybook/addon-a11y": "^10.3.4",
+    "@storybook/addon-docs": "^10.3.4",
+    "@storybook/addon-onboarding": "^10.3.4",
+    "@storybook/addon-vitest": "^10.3.4",
+    "@storybook/react-vite": "^10.3.4",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitest/browser-playwright": "^4.1.2",
+    "@vitest/coverage-v8": "^4.1.2",
+    "autoprefixer": "^10.4.27",
+    "playwright": "^1.59.1",
+    "prop-types": "^15.8.1",
+    "storybook": "^10.3.4",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@heroicons/react": "^2.2.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.7.0",
+    "motion": "^12.38.0",
+    "react": "^19.2.4",
+    "react-countup": "^6.5.3",
+    "react-dom": "^19.2.4",
+    "react-hot-toast": "^2.6.0"
+  }
+}
