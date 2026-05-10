@@ -1,59 +1,137 @@
 # Component Library
 
-A personal collection of reusable components extracted from previous builds. Browse, copy, paste, and restyle as needed.
+A copy-paste component library built with React, TypeScript, and Tailwind CSS. Every component is self-contained, documented in Storybook, and designed to be dropped into any project and restyled.
 
-## Structure
+**[Live Storybook](https://component-library.netlify.app)** — browse all components with interactive previews.
+
+## Quick Start
+
+```bash
+# 1. Find the component you need in Storybook or the catalog below
+# 2. Copy the component folder into your project
+cp -r components/patterns/hover-reveal-card ./src/components/
+
+# 3. Install its dependencies (listed at the top of each .tsx file)
+npm install motion lucide-react
+
+# 4. Import and use
+import { HoverRevealCard } from './components/hover-reveal-card'
+```
+
+Every component file starts with a dependency comment:
+```tsx
+// Dependencies: motion, lucide-react
+// Source: project-name
+```
+
+Install whatever is listed. If it says `(none)`, the component only needs React.
+
+## Project Structure
 
 ```
 components/
-  ui/           Atomic UI elements (buttons, inputs, badges, toggles)
-  layout/       Layout components (navbars, sidebars, headers, footers)
-  sections/     Page sections (hero, pricing, testimonials, CTA)
-  forms/        Form patterns (contact, login, signup, checkout)
-  patterns/     Composite patterns (modals, cards, tables, accordions, tabs)
+  ui/           Atomic elements — cards, badges, avatars, loaders, toasts
+  layout/       Structural components — sidebars, navbars
+  sections/     Full page sections — heroes, galleries, testimonials
+  patterns/     Composite patterns — modals, reveal cards, comparison layouts
+  forms/        Form patterns (contact, login, checkout)
 hooks/          Reusable React hooks
-utils/          Helper functions (cn, formatters, validators)
-styles/         Shared styles, Tailwind config snippets
-assets/         Icons, images, fonts
+utils/          Animation presets and helper functions
+styles/         Tailwind config and shared styles
+public/         Static assets served by Storybook (videos, images)
 ```
 
-## How to use
+### Component folder convention
 
-1. Browse the [Component Catalog](#component-catalog) below
-2. Find the component you need
-3. Copy the file(s) into your project
-4. Install any listed dependencies
-5. Restyle to fit your project
-
-## Adding components from a previous build
-
-When importing components from a completed project, place them in the appropriate category folder. Each component should have:
-
-- Its own folder named after the component (kebab-case)
-- An `index.ts` barrel export
-- Dependencies listed in a comment at the top of the file
-
-Example:
+Each component lives in its own folder:
 ```
-components/ui/button/
-  button.tsx        # The component
-  index.ts          # export { Button } from './button'
+components/patterns/hover-reveal-card/
+  hover-reveal-card.tsx           # The component
+  hover-reveal-card.stories.tsx   # Storybook stories
+  index.ts                        # Barrel export
 ```
 
-### Dependency comment format
+## Working With AI
 
-Add this to the top of each component file:
+This library is designed for AI-assisted development. Here are the most useful prompts:
 
-```tsx
-// Dependencies: framer-motion, clsx, tailwind-merge
-// Source: project-name (optional, for your reference)
+**To use a component:**
+> Copy the HoverRevealCard component into my project at src/components/ and show me how to use it with my data. Here's what I need to display: [your data shape]
+
+**To restyle a component:**
+> Take the KpiCard component and change it to match my design system. My brand colors are [colors], I use [font], and my cards have [border radius/shadow style].
+
+**To adapt a component:**
+> I want to use the TestimonialCarousel but I need it to show 3 cards per page instead of 2, and I want to remove the auto-rotate. Show me the changes.
+
+**To combine components:**
+> Build me a dashboard layout using SidebarNav on the left, a grid of KpiCards at the top, and HoverRevealCards below for my client list.
+
+### AI context tips
+
+- Point your AI at the specific `.tsx` file — each component is fully self-contained
+- The `.stories.tsx` file shows every prop and usage pattern — feed it to your AI for context
+- Components use inline styles rather than CSS variables, so they work without any theme setup
+- `motion` and `framer-motion` are interchangeable — this library uses both (motion is the newer package name)
+
+## Running Storybook Locally
+
+```bash
+npm install
+npm run storybook        # starts on http://localhost:6006
+npm run build-storybook  # builds static site to storybook-static/
 ```
+
+## Editing Components
+
+### Changing colors and styling
+
+Most components use inline `style` props with hex colors rather than CSS variables. To restyle:
+
+1. Open the `.tsx` file
+2. Search for hex colors (e.g. `#C8A44E`, `#0064B0`) and replace with your brand colors
+3. Tailwind classes handle layout and spacing — edit those as normal
+
+Some components accept `accentColor` or `gradient` props — use those first before editing the source.
+
+### Changing content
+
+All story files use generic placeholder data. When you copy a component into your project, you'll pass your own data through props. The stories show you the exact data shape each component expects.
+
+### Adding a new component
+
+1. Create a folder: `components/[category]/your-component/`
+2. Add three files:
+   - `your-component.tsx` — with `// Dependencies:` comment at the top
+   - `your-component.stories.tsx` — at least one story
+   - `index.ts` — barrel export
+3. Update the catalog table in this README
+
+### Dependencies across the library
+
+| Package | Used by | Purpose |
+|---|---|---|
+| `motion` / `framer-motion` | Most components | Animations, transitions, scroll effects |
+| `lucide-react` | Cards, modals, nav | Icons |
+| `@headlessui/react` | CatalogCard, CaseStudyModal | Accessible dialogs and tabs |
+| `@heroicons/react` | CatalogCard, ImageLightbox | Icons |
+| `react-fast-marquee` | ScrollingTestimonials | Auto-scrolling ticker |
+| `react-force-graph-2d` | NetworkGraph | Force-directed graph visualization |
+| `react-icons` | StakeholderPanels | Tabler icons |
+| `react-countup` | AnimatedCounter | Number animation |
+| `react-hot-toast` | ToastProvider | Toast notifications |
+
+## Deployment
+
+This Storybook is configured for Netlify deployment via `netlify.toml`. Any push to `main` triggers a rebuild.
+
+To deploy elsewhere, run `npm run build-storybook` and serve the `storybook-static/` directory.
 
 ---
 
 ## Component Catalog
 
-> This catalog is updated each time new components are added.
+> 60+ components across 6 categories. Click any name to browse its source.
 
 ### UI Components
 
