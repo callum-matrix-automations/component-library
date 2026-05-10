@@ -2,7 +2,7 @@
 
 A copy-paste component library built with React, TypeScript, and Tailwind CSS. Every component is self-contained, documented in Storybook, and designed to be dropped into any project and restyled.
 
-**[Live Storybook](https://component-library.netlify.app)** — browse all components with interactive previews.
+**[Live Storybook](https://lambent-mochi-00fb7f.netlify.app/)** — browse all components with interactive previews.
 
 ## Quick Start
 
